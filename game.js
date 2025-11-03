@@ -41,7 +41,7 @@ function initGame() {
     // Create 12 squares
     for (let i = 0; i < 12; i++) {
         const square = document.createElement('div');
-        square.className = 'bg-gradient-to-br from-purple-500 to-blue-500 cursor-pointer hover:opacity-90 transition-all flex items-center justify-center';
+        square.className = 'bg-gradient-to-br from-purple-500 to-blue-500 cursor-pointer hover:scale-105 transition-all flex items-center justify-center';
         square.dataset.index = i;
         
         // Check if square is already opened
