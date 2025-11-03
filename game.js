@@ -1,17 +1,17 @@
-// Sample questions data - User will provide their own later
+// Questions about integer addition
 const questionsData = [
-    { id: 1, question: "Câu hỏi mẫu 1: 2 + 2 = ?", answers: ["3", "4", "5", "6"], correct: 1 },
-    { id: 2, question: "Câu hỏi mẫu 2: Thủ đô Việt Nam?", answers: ["Hà Nội", "TP.HCM", "Đà Nẵng", "Huế"], correct: 0 },
-    { id: 3, question: "Câu hỏi mẫu 3: 5 x 3 = ?", answers: ["10", "15", "20", "25"], correct: 1 },
-    { id: 4, question: "Câu hỏi mẫu 4: Màu của lá cây?", answers: ["Đỏ", "Xanh", "Vàng", "Tím"], correct: 1 },
-    { id: 5, question: "Câu hỏi mẫu 5: 10 - 3 = ?", answers: ["5", "6", "7", "8"], correct: 2 },
-    { id: 6, question: "Câu hỏi mẫu 6: Con vật nào bay được?", answers: ["Cá", "Chim", "Chó", "Mèo"], correct: 1 },
-    { id: 7, question: "Câu hỏi mẫu 7: 8 / 2 = ?", answers: ["2", "3", "4", "5"], correct: 2 },
-    { id: 8, question: "Câu hỏi mẫu 8: Mặt trời mọc hướng nào?", answers: ["Đông", "Tây", "Nam", "Bắc"], correct: 0 },
-    { id: 9, question: "Câu hỏi mẫu 9: 3 + 7 = ?", answers: ["9", "10", "11", "12"], correct: 1 },
-    { id: 10, question: "Câu hỏi mẫu 10: Nước có công thức?", answers: ["CO2", "H2O", "O2", "N2"], correct: 1 },
-    { id: 11, question: "Câu hỏi mẫu 11: 20 / 4 = ?", answers: ["4", "5", "6", "7"], correct: 1 },
-    { id: 12, question: "Câu hỏi mẫu 12: Màu của trời?", answers: ["Đỏ", "Xanh", "Vàng", "Tím"], correct: 1 }
+    { id: 1, question: "Câu 1: Kết quả của phép tính 25 + 15 là:", answers: ["40", "10", "50", "30"], correct: 0 },
+    { id: 2, question: "Câu 2: Kết quả của phép tính (– 100) + (– 50) là:", answers: ["– 50", "50", "150", "– 150"], correct: 3 },
+    { id: 3, question: "Câu 3: Tổng của hai số – 313 và – 211 là:", answers: ["534", "524", "– 524", "– 534"], correct: 2 },
+    { id: 4, question: "Câu 4: Tổng của – 161 và – 810 là:", answers: ["– 971", "971", "– 649", "649"], correct: 0 },
+    { id: 5, question: "Câu 5: Kết quả của phép tính (– 50) + 30 là:", answers: ["– 20", "20", "– 30", "80"], correct: 0 },
+    { id: 6, question: "Câu 6: Số nguyên nào dưới dây là kết quả của phép tính 52 + (– 122)?", answers: ["– 70", "70", "60", "– 60"], correct: 0 },
+    { id: 7, question: "Câu 7: Tính (– 909) + 909.", answers: ["1818", "1", "0", "– 1818"], correct: 2 },
+    { id: 8, question: "Câu 8: Tổng của hai số nguyên dương là số?", answers: ["Số nguyên dương", "Số nguyên âm", "0", "Kết quả khác"], correct: 0 },
+    { id: 9, question: "Câu 9: Tổng của hai số nguyên âm luôn … mỗi số hạng.", answers: ["Nhỏ hơn", "Lớn hơn", "Bằng", "Tất cả đáp án trên"], correct: 0 },
+    { id: 10, question: "Câu 10: Kết quả của phép tính (–75) + 125 là:", answers: ["50", "–50", "200", "–200"], correct: 0 },
+    { id: 11, question: "Câu 11: Hai số nguyên đối nhau có tổng bằng…?", answers: ["0", "-1", "-2", "Kết quả khác"], correct: 0 },
+    { id: 12, question: "Câu 12: Cho hai số nguyên –45 và 60. Tổng của hai số này là:", answers: ["–105", "105", "15", "–15"], correct: 2 }
 ];
 
 // Game state
@@ -78,11 +78,25 @@ function openQuestion(index) {
     // Clear previous options
     answerOptions.innerHTML = '';
     
-    // Create answer buttons
+    // Create answer buttons with A, B, C, D labels
+    const labels = ['A', 'B', 'C', 'D'];
     question.answers.forEach((answer, idx) => {
         const button = document.createElement('button');
-        button.className = 'w-full px-4 py-3 bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition text-left font-medium';
-        button.textContent = answer;
+        button.className = 'w-full px-6 py-4 bg-gradient-to-r from-orange-500 to-yellow-500 hover:from-orange-400 hover:to-yellow-400 text-white rounded-xl transition transform hover:scale-105 text-left font-semibold border-2 border-yellow-600 shadow-lg flex items-center gap-4';
+        
+        // Create label badge
+        const labelBadge = document.createElement('span');
+        labelBadge.className = 'bg-blue-900 text-yellow-400 font-bold px-3 py-1 rounded-lg text-lg';
+        labelBadge.textContent = labels[idx];
+        
+        // Create answer text
+        const answerText = document.createElement('span');
+        answerText.className = 'flex-1 text-lg';
+        answerText.textContent = answer;
+        answerText.style.textShadow = '1px 1px 2px rgba(0,0,0,0.3)';
+        
+        button.appendChild(labelBadge);
+        button.appendChild(answerText);
         button.addEventListener('click', () => checkAnswer(idx, question.correct, index));
         answerOptions.appendChild(button);
     });
