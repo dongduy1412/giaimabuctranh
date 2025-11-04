@@ -20,6 +20,9 @@ let gameState = {
     currentSquare: null
 };
 
+let timer = null;
+let timeLeft = 10;
+
 // Load game state from localStorage
 function loadGameState() {
     const saved = localStorage.getItem('gameState');
@@ -50,7 +53,7 @@ function initGame() {
         } else {
             const text = document.createElement('div');
             text.className = 'text-white font-bold text-4xl';
-            text.textContent = '?';
+            text.textContent = i + 1;
             square.appendChild(text);
             
             square.addEventListener('click', () => openQuestion(i));
@@ -74,6 +77,9 @@ function openQuestion(index) {
     
     modalTitle.textContent = `Câu hỏi #${index + 1}`;
     modalQuestion.textContent = question.question;
+    
+    // Start timer
+    startTimer();
     
     // Clear previous options
     answerOptions.innerHTML = '';
@@ -104,8 +110,52 @@ function openQuestion(index) {
     modal.classList.remove('hidden');
 }
 
+// Start timer
+function startTimer() {
+    timeLeft = 10;
+    updateTimerDisplay();
+    
+    timer = setInterval(() => {
+        timeLeft--;
+        updateTimerDisplay();
+        
+        if (timeLeft <= 0) {
+            stopTimer();
+            alert('⏱️ Hết giờ! Thử lại nhé.');
+            closeModal();
+        }
+    }, 1000);
+}
+
+// Stop timer
+function stopTimer() {
+    if (timer) {
+        clearInterval(timer);
+        timer = null;
+    }
+}
+
+// Update timer display
+function updateTimerDisplay() {
+    const timerElement = document.getElementById('timer');
+    if (timerElement) {
+        timerElement.textContent = timeLeft;
+        
+        // Change color based on time left
+        if (timeLeft <= 3) {
+            timerElement.className = 'text-6xl font-bold text-red-500';
+        } else if (timeLeft <= 5) {
+            timerElement.className = 'text-6xl font-bold text-yellow-400';
+        } else {
+            timerElement.className = 'text-6xl font-bold text-green-400';
+        }
+    }
+}
+
 // Check answer
 function checkAnswer(selected, correct, squareIndex) {
+    stopTimer();
+    
     if (selected === correct) {
         // Correct answer - remove square
         const square = document.querySelector(`[data-index="${squareIndex}"]`);
@@ -134,6 +184,7 @@ function checkAnswer(selected, correct, squareIndex) {
 
 // Close modal
 function closeModal() {
+    stopTimer();
     document.getElementById('questionModal').classList.add('hidden');
     gameState.currentSquare = null;
 }
