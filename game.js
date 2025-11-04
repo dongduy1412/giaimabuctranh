@@ -1,17 +1,17 @@
 // Questions about integer addition
 const questionsData = [
-    { id: 1, question: "Câu 1: Kết quả của phép tính 25 + 15 là:", answers: ["40", "10", "50", "30"], correct: 0 },
-    { id: 2, question: "Câu 2: Kết quả của phép tính (– 100) + (– 50) là:", answers: ["– 50", "50", "150", "– 150"], correct: 3 },
+    { id: 1, question: "Câu 1: Kết quả của phép tính 25 + 15 + 150 là:", answers: ["190", "100", "150", "130"], correct: 0 },
+    { id: 2, question: "Câu 2: Kết quả của phép tính (– 100) + (– 50) + (– 150) là:", answers: ["– 150", "150", "300", "– 300"], correct: 3 },
     { id: 3, question: "Câu 3: Tổng của hai số – 313 và – 211 là:", answers: ["534", "524", "– 524", "– 534"], correct: 2 },
     { id: 4, question: "Câu 4: Tổng của – 161 và – 810 là:", answers: ["– 971", "971", "– 649", "649"], correct: 0 },
-    { id: 5, question: "Câu 5: Kết quả của phép tính (– 50) + 30 là:", answers: ["– 20", "20", "– 30", "80"], correct: 0 },
+    { id: 5, question: "Câu 5: Kết quả của phép tính (– 167) + 69 là:", answers: ["– 89", "98", "– 98", "89"], correct: 2 },
     { id: 6, question: "Câu 6: Số nguyên nào dưới dây là kết quả của phép tính 52 + (– 122)?", answers: ["– 70", "70", "60", "– 60"], correct: 0 },
     { id: 7, question: "Câu 7: Tính (– 909) + 909.", answers: ["1818", "1", "0", "– 1818"], correct: 2 },
     { id: 8, question: "Câu 8: Tổng của hai số nguyên dương là số?", answers: ["Số nguyên dương", "Số nguyên âm", "0", "Kết quả khác"], correct: 0 },
     { id: 9, question: "Câu 9: Tổng của hai số nguyên âm luôn … mỗi số hạng.", answers: ["Nhỏ hơn", "Lớn hơn", "Bằng", "Tất cả đáp án trên"], correct: 0 },
-    { id: 10, question: "Câu 10: Kết quả của phép tính (–75) + 125 là:", answers: ["50", "–50", "200", "–200"], correct: 0 },
-    { id: 11, question: "Câu 11: Hai số nguyên đối nhau có tổng bằng…?", answers: ["0", "-1", "-2", "Kết quả khác"], correct: 0 },
-    { id: 12, question: "Câu 12: Cho hai số nguyên –45 và 60. Tổng của hai số này là:", answers: ["–105", "105", "15", "–15"], correct: 2 }
+    { id: 10, question: "Câu 10: Kết quả của phép tính (–75) + 1250 là:", answers: ["1175", "–1150", "1150", "–1175"], correct: 0 },
+    { id: 11, question: "Câu 11: Cho hai số nguyên –45 và 60. Tổng của hai số này là:", answers: ["–105", "105", "15", "–15"], correct: 2 },
+    { id: 12, question: "Câu 12: Hai số nguyên đối nhau có tổng bằng…?", answers: ["0", "-1", "-2", "Kết quả khác"], correct: 0 }
 ];
 
 // Game state
